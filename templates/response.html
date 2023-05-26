@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response Page</title>
+</head>
+<body>
+    <h1>Response</h1>
+
+    {% if response %}
+        <div class="table-container">
+            {{ response|safe }}
+        </div>
+    {% else %}
+        <p>No response data available.</p>
+    {% endif %}
+</body>
+</html>

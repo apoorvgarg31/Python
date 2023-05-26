@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Request Page</title>
+    <style>
+        /* Center the content */
+        html, body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style the card */
+        .card {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Basic form styling */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>HTTP Request Page</h1>
+    <form action="/send_request" method="POST">
+        <label for="url">URL:</label>
+        <input type="text" name="url" id="url" required><br>
+
+        <label for="authorization">Authorization:</label>
+        <input type="text" name="authorization" id="authorization" required><br>
+
+        <label for="headers">Headers:</label>
+        <div id="headers-container">
+            <div class="header-input">
+                <input type="text" name="header_key[]" placeholder="Key">
+                <input type="text" name="header_value[]" placeholder="Value">
+            </div>
+        </div>
+        <button type="button" id="add-header">Add Header</button><br>
+
+        <label for="cookies">Cookies:</label>
+        <input type="text" name="cookies" id="cookies"><br>
+
+        <input type="submit" value="SEND">
+    </form>
+
+    <script>
+        // JavaScript code to dynamically add header input fields
+        document.getElementById('add-header').addEventListener('click', function () {
+            var container = document.getElementById('headers-container');
+            var headerInput = document.createElement('div');
+            headerInput.className = 'header-input';
+            headerInput.innerHTML = '<input type="text" name="header_key[]" placeholder="Key">' +
+                '<input type="text" name="header_value[]" placeholder="Value">';
+            container.appendChild(headerInput);
+        });
+    </script>
+</body>
+</html>
